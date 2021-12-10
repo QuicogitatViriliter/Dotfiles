@@ -28,7 +28,7 @@ nnoremap <leader>k  :wincmd k<CR>
 nnoremap <leader>l  :wincmd l<CR>
 nnoremap <leader>mk :make<CR>
 
-nnoremap <leader>py i"""<CR><CR>@author Santos Shiden Nicholas<CR>@version 0.1 DATE<CR>"""
+nnoremap <leader>py i"""<CR>@author Santos Shiden Nicholas<CR>@version 0.1 <Esc>:r !date +"\%Y-\%m-\%d"<CR>i<BS><Esc>o"""<CR><CR>
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
