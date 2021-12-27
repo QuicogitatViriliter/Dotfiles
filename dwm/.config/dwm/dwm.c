@@ -241,6 +241,7 @@ static char stext[256];
 static int screen;
 static int sw, sh;           /* X display screen geometry width, height */
 static int bh, blw = 0;      /* bar geometry */
+static int isfloatsize = 0;  /* floating indicator size */
 static int lrpad;            /* sum of left and right padding for text */
 static int (*xerrorxlib)(Display *, XErrorEvent *);
 static unsigned int numlockmask = 0;
@@ -697,8 +698,8 @@ void
 drawbar(Monitor *m)
 {
 	int x, w, tw = 0;
-	int boxs = drw->fonts->h / 9;
-	int boxw = drw->fonts->h / 6 + 2;
+	int boxs = drw->fonts->h / 9 - 1;
+	int boxw = drw->fonts->h / 6 + 1;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 
@@ -716,25 +717,29 @@ drawbar(Monitor *m)
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
-		w = TEXTW(tags[i]);
+		w = TEXTW(tags[i]) - 8;//tag rect
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-		if (occ & 1 << i)
-			drw_rect(drw, x + boxs, boxs, boxw, boxw,
+		drw_text(drw, x, 0, w, bh, lrpad / 2 - 2, tags[i], urg & 1 << i);//tag name
+		if (occ & 1 << i)//(         x,        y,        w,         h) tag indicator
+			drw_rect(drw, x + boxs, boxs, boxw, boxw + 10,
 				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
 				urg & 1 << i);
 		x += w;
 	}
-	w = blw = TEXTW(m->ltsymbol);
+	w = blw = TEXTW(m->ltsymbol) - 16;
 	drw_setscheme(drw, scheme[SchemeNorm]);
-	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+	x = drw_text(drw, x, 0, w, bh, lrpad / 2 - 8, m->ltsymbol, 0);//layout indicator
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (m->sel) {
+            /* fix overflow when window name is bigger than window width */
+			int mid = (m->ww - (int)TEXTW(m->sel->name)) / 2 - x;
+			/* make sure name will not overlap on tags even when it is very long */
+			mid = mid >= lrpad / 2 ? mid : lrpad / 2;
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
-			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+			drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
 			if (m->sel->isfloating)
-				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
+				drw_rect(drw, x + boxs, boxs, boxw + isfloatsize, boxw + isfloatsize, m->sel->isfixed, 0);//isFloating indicator
 		} else {
 			drw_setscheme(drw, scheme[SchemeNorm]);
 			drw_rect(drw, x, 0, w, bh, 1, 1);
@@ -1546,7 +1551,8 @@ setup(void)
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	bh = user_bh ? user_bh : drw->fonts->h + 2;
+	isfloatsize = user_isfloatsize;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
