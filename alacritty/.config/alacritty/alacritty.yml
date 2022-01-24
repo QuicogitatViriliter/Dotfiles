@@ -49,6 +49,10 @@ window:
     x: 0
     y: 0
 
+  # Window opacity as a floating point number from `0.0` to `1.0`.
+  # The value `0.0` is completely transparent and `1.0` is opaque.
+  opacity: 0.75
+
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
 
@@ -204,11 +208,7 @@ colors:
     white: '#f8f8f2'
     yellow: '#ffcb6b'
 
-# Background opacity
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.75
+
 
 selection:
   # This string contains all characters that are used as separators for
