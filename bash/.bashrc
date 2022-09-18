@@ -22,16 +22,14 @@ export IMAGE='sxiv'
 
 #abbreviations
 alias b1='cd ..'
-alias b2='cd ../..'
-alias b3='cd ../../..'
 alias shut='sudo shutdown -h now'
 alias rbot='sudo reboot'
 alias fatmount='sudo mount -o "rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,showexec,flush"'
 
 alias ytdlM='yt-dlp -o "~/music/%(title)s.%(ext)s" -f "bestaudio[ext=m4a]/best" -x --embed-thumbnail'
-alias sputydl='spotdl --dt 4 --st 4 --path-template "{album}/{title}-{artist}.{ext}"'
+#alias sputydl='spotdl --dt 4 --st 4 --path-template "{album}/{title}-{artist}.{ext}"'
 
-alias wifi='iwctl station wlan0 connect TIM-31263573 && dunstify "Connected to TIM-31263573"'
+#alias wifi='iwctl station wlan0 connect TIM-31263573 && dunstify "Connected to TIM-31263573"'
 alias suckinstall='sudo cp config.def.h config.h && sudo make clean install'
 
 #pacman
