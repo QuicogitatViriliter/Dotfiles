@@ -57,13 +57,13 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-static Key keys[] = {
+static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ 0,              XF86XK_AudioRaiseVolume, spawn,          SHCMD("pulsemixer --change-volume +1") },
 	{ 0,              XF86XK_AudioLowerVolume, spawn,          SHCMD("pulsemixer --change-volume -1") },
 	{ 0,              XF86XK_AudioMute,        spawn,          SHCMD("pulsemixer --toggle-mute") },
-	{ 0,              XF86XK_MonBrightnessUp,     spawn,          SHCMD("xbacklight -inc 10") },
-	{ 0,              XF86XK_MonBrightnessDown,   spawn,          SHCMD("xbacklight -dec 10") },
+	{ 0,              XF86XK_MonBrightnessUp,  spawn,          SHCMD("xbacklight -inc 10") },
+	{ 0,              XF86XK_MonBrightnessDown,spawn,          SHCMD("xbacklight -dec 10") },
 	{ 0,                            XK_Print,  spawn,          SHCMD("flashpoint") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY,                       XK_Return, spawn,          SHCMD("alacritty") },
@@ -97,7 +97,7 @@ static Key keys[] = {
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
-static Button buttons[] = {
+static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },

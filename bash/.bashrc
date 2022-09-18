@@ -17,7 +17,7 @@ source /usr/share/fzf/key-bindings.bash
 #default apps
 export EDITOR='nvim'
 export VIDEO='mpv'
-export BROWSER='librewolf'
+export BROWSER='firefox'
 export IMAGE='sxiv'
 
 #abbreviations
@@ -29,7 +29,6 @@ alias fatmount='sudo mount -o "rw,nosuid,nodev,uid=1000,gid=1000,shortname=mixed
 alias ytdlM='yt-dlp -o "~/music/%(title)s.%(ext)s" -f "bestaudio[ext=m4a]/best" -x --embed-thumbnail'
 #alias sputydl='spotdl --dt 4 --st 4 --path-template "{album}/{title}-{artist}.{ext}"'
 
-#alias wifi='iwctl station wlan0 connect TIM-31263573 && dunstify "Connected to TIM-31263573"'
 alias suckinstall='sudo cp config.def.h config.h && sudo make clean install'
 
 #pacman
