@@ -3,6 +3,7 @@ colorscheme wombat256grf
 autocmd InsertEnter * norm zz
 
 let mapleader = " "
+set clipboard=unnamedplus
 set termguicolors
 set number relativenumber
 set tabstop=4 softtabstop=4 shiftwidth=4
