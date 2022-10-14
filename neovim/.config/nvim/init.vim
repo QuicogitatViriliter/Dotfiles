@@ -14,11 +14,11 @@ set nowrap
 set incsearch
 set scrolloff=16
 set noshowmode
-set cmdheight=2
+set cmdheight=1
 set updatetime=50
 set cursorline cursorcolumn
 set splitbelow splitright
-set wildmode=longest,list,full
+set wildmode=longest:full,full
 
 nnoremap <leader>c  :set cursorline! cursorcolumn!<CR>
 nnoremap <leader>gr :%s//g<Left><Left>
