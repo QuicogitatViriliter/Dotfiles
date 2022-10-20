@@ -18,6 +18,7 @@ set cmdheight=1
 set updatetime=50
 set cursorline cursorcolumn
 set splitbelow splitright
+set wildmenu
 set wildmode=longest:full,full
 
 nnoremap <leader>c  :set cursorline! cursorcolumn!<CR>
@@ -37,7 +38,7 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-augroup AGAG
+augroup whiteSpaceRemoval
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
