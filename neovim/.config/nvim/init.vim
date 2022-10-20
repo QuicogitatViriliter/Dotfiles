@@ -29,8 +29,15 @@ nnoremap <leader>j  :wincmd j<CR>
 nnoremap <leader>k  :wincmd k<CR>
 nnoremap <leader>l  :wincmd l<CR>
 nnoremap <leader>mk :make<CR>
-
 nnoremap <leader>av a@author Santos Shiden Nicholas<CR>@version 0.1 <Esc>:r !date +"\%Y-\%m-\%d"<CR>i<BS><Esc>o
+
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
