@@ -1,3 +1,10 @@
+call plug#begin('~/.vim/plugged')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'jiangmiao/auto-pairs'
+call plug#end()
+
+luafile $HOME/.config/nvim/treesitter.lua
+
 colorscheme wombat256grf
 
 autocmd InsertEnter * norm zz
@@ -30,14 +37,6 @@ nnoremap <leader>k  :wincmd k<CR>
 nnoremap <leader>l  :wincmd l<CR>
 nnoremap <leader>mk :make<CR>
 nnoremap <leader>av a@author Santos Shiden Nicholas<CR>@version 0.1 <Esc>:r !date +"\%Y-\%m-\%d"<CR>i<BS><Esc>o
-
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
 
 fun! TrimWhitespace()
     let l:save = winsaveview()

@@ -39,7 +39,7 @@ fi
 setxkbmap -layout br -option caps:escape_shifted_capslock &
 xset r rate 200 60
 picom -b --experimental-backend &
-#dunst &
+dunst &
 statusbar &
 randwall &
 
