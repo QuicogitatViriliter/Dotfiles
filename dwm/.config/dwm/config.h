@@ -30,7 +30,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "discord",  "discord" , NULL,       1 << 3,       0,           -1 },
-	{ "mpv"    ,  "musicbox", NULL,       1 << 2,       1,           -1 },
+	{ "mpv"    ,  "musicbox", NULL,       1 << 2,       0,           -1 },
 };
 
 /* layout(s) */

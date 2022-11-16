@@ -1,9 +1,11 @@
-call plug#begin('~/.vim/plugged')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+call plug#begin()
     Plug 'jiangmiao/auto-pairs'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 
-luafile $HOME/.config/nvim/treesitter.lua
+source $HOME/.config/nvim/coc.vim
 
 colorscheme wombat256grf
 
