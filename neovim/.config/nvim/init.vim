@@ -3,6 +3,7 @@ call plug#begin()
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+"    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 source $HOME/.config/nvim/coc.vim
@@ -30,14 +31,14 @@ set splitbelow splitright
 set wildmenu
 set wildmode=longest:full,full
 
-nnoremap <leader>c  :set cursorline! cursorcolumn!<CR>
+nnoremap <leader>sc  :set cursorline! cursorcolumn!<CR>
 nnoremap <leader>gr :%s//g<Left><Left>
 nnoremap <Esc><Esc> :nohlsearch<CR>
 nnoremap <leader>h  :wincmd h<CR>
 nnoremap <leader>j  :wincmd j<CR>
 nnoremap <leader>k  :wincmd k<CR>
 nnoremap <leader>l  :wincmd l<CR>
-nnoremap <leader>mk :make<CR>
+nnoremap <leader>cc :!gcc % && ./a.out<CR>
 nnoremap <leader>av a@author Santos Shiden Nicholas<CR>@version 0.1 <Esc>:r !date +"\%Y-\%m-\%d"<CR>i<BS><Esc>o
 
 fun! TrimWhitespace()
